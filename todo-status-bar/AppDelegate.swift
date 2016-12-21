@@ -26,7 +26,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         guard let button = statusItem.button else { return }
-        button.title = "TODO"
+        button.title = "TODOs"
 
         let menu = NSMenu()
 
