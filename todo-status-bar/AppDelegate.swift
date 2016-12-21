@@ -37,7 +37,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
  */
         let menu = NSMenu()
         let item1 = NSMenuItem(title: "1 title", action: #selector(AppDelegate.some(_:)), keyEquivalent: "P")
-        item1.state = 1
+        item1.state = NSOnState
         let item2 = NSMenuItem(title: "2 title", action: nil, keyEquivalent: "q")
         menu.addItem(item1)
         menu.addItem(item2)
