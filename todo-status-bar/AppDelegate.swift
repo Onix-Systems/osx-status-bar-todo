@@ -36,6 +36,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             menu.addItem(todo)
         }
         menu.addItem(NSMenuItem.separator())
+        let edit = NSMenuItem(title: "Edit TODOs...", action: #selector(AppDelegate.menuEditItemPressed(_:)), keyEquivalent: "")
+        menu.addItem(edit)
+
+        menu.addItem(NSMenuItem.separator())
 
         let quit = NSMenuItem(title: "Quit", action: #selector(NSApp.terminate(_:)), keyEquivalent: "")
         menu.addItem(quit)
@@ -59,6 +63,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         guard let todoItem = sender.representedObject as? TodoItem else { return }
         todoItem.completed = !todoItem.completed
         sender.state = todoItem.completed ? NSOnState : NSOffState
+    }
+
+    @objc private func menuEditItemPressed(_ sender: NSMenuItem) {
+
     }
 
 }
