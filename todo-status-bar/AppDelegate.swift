@@ -36,6 +36,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             menuItem.representedObject = todoItem
             menu.addItem(menuItem)
         }
+        menu.addItem(NSMenuItem.separator())
+
+        let quit = NSMenuItem(title: "Quit", action: #selector(NSApp.terminate(_:)), keyEquivalent: "")
+        menu.addItem(quit)
+
         statusItem.menu = menu
     }
 
