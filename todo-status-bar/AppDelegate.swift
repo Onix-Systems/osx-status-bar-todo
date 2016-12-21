@@ -29,12 +29,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         button.title = "TODOs"
 
         let menu = NSMenu()
-
         let todoItems = generateTodosList()
         todoItems.forEach { todoItem in
-            let menuItem = NSMenuItem(title: todoItem.title, action: #selector(AppDelegate.menuTodoItemPressed(_:)), keyEquivalent: "")
-            menuItem.representedObject = todoItem
-            menu.addItem(menuItem)
+            let todo = NSMenuItem(title: todoItem.title, action: #selector(AppDelegate.menuTodoItemPressed(_:)), keyEquivalent: "")
+            todo.representedObject = todoItem
+            menu.addItem(todo)
         }
         menu.addItem(NSMenuItem.separator())
 
