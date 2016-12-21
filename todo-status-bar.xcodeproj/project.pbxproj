@@ -10,6 +10,8 @@
 		1E545FC81E0AD7E500D19810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E545FC71E0AD7E500D19810 /* AppDelegate.swift */; };
 		1E545FCA1E0AD7E500D19810 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E545FC91E0AD7E500D19810 /* Assets.xcassets */; };
 		1E545FCD1E0AD7E500D19810 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E545FCB1E0AD7E500D19810 /* MainMenu.xib */; };
+		1E545FD61E0AE62400D19810 /* EditTodosWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E545FD41E0AE62400D19810 /* EditTodosWindowController.swift */; };
+		1E545FD71E0AE62400D19810 /* EditTodosWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E545FD51E0AE62400D19810 /* EditTodosWindowController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -18,6 +20,8 @@
 		1E545FC91E0AD7E500D19810 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1E545FCC1E0AD7E500D19810 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		1E545FCE1E0AD7E500D19810 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1E545FD41E0AE62400D19810 /* EditTodosWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTodosWindowController.swift; sourceTree = "<group>"; };
+		1E545FD51E0AE62400D19810 /* EditTodosWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditTodosWindowController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +55,8 @@
 			isa = PBXGroup;
 			children = (
 				1E545FC71E0AD7E500D19810 /* AppDelegate.swift */,
+				1E545FD41E0AE62400D19810 /* EditTodosWindowController.swift */,
+				1E545FD51E0AE62400D19810 /* EditTodosWindowController.xib */,
 				1E545FC91E0AD7E500D19810 /* Assets.xcassets */,
 				1E545FCB1E0AD7E500D19810 /* MainMenu.xib */,
 				1E545FCE1E0AD7E500D19810 /* Info.plist */,
@@ -118,6 +124,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E545FD71E0AE62400D19810 /* EditTodosWindowController.xib in Resources */,
 				1E545FCA1E0AD7E500D19810 /* Assets.xcassets in Resources */,
 				1E545FCD1E0AD7E500D19810 /* MainMenu.xib in Resources */,
 			);
@@ -131,6 +138,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1E545FC81E0AD7E500D19810 /* AppDelegate.swift in Sources */,
+				1E545FD61E0AE62400D19810 /* EditTodosWindowController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
