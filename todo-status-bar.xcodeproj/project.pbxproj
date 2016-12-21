@@ -1,0 +1,292 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1E545FC81E0AD7E500D19810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E545FC71E0AD7E500D19810 /* AppDelegate.swift */; };
+		1E545FCA1E0AD7E500D19810 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1E545FC91E0AD7E500D19810 /* Assets.xcassets */; };
+		1E545FCD1E0AD7E500D19810 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E545FCB1E0AD7E500D19810 /* MainMenu.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1E545FC41E0AD7E500D19810 /* todo-status-bar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "todo-status-bar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E545FC71E0AD7E500D19810 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		1E545FC91E0AD7E500D19810 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1E545FCC1E0AD7E500D19810 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		1E545FCE1E0AD7E500D19810 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1E545FC11E0AD7E500D19810 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1E545FBB1E0AD7E500D19810 = {
+			isa = PBXGroup;
+			children = (
+				1E545FC61E0AD7E500D19810 /* todo-status-bar */,
+				1E545FC51E0AD7E500D19810 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1E545FC51E0AD7E500D19810 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1E545FC41E0AD7E500D19810 /* todo-status-bar.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1E545FC61E0AD7E500D19810 /* todo-status-bar */ = {
+			isa = PBXGroup;
+			children = (
+				1E545FC71E0AD7E500D19810 /* AppDelegate.swift */,
+				1E545FC91E0AD7E500D19810 /* Assets.xcassets */,
+				1E545FCB1E0AD7E500D19810 /* MainMenu.xib */,
+				1E545FCE1E0AD7E500D19810 /* Info.plist */,
+			);
+			path = "todo-status-bar";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1E545FC31E0AD7E500D19810 /* todo-status-bar */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1E545FD11E0AD7E500D19810 /* Build configuration list for PBXNativeTarget "todo-status-bar" */;
+			buildPhases = (
+				1E545FC01E0AD7E500D19810 /* Sources */,
+				1E545FC11E0AD7E500D19810 /* Frameworks */,
+				1E545FC21E0AD7E500D19810 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "todo-status-bar";
+			productName = "todo-status-bar";
+			productReference = 1E545FC41E0AD7E500D19810 /* todo-status-bar.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1E545FBC1E0AD7E500D19810 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Onix-Systems";
+				TargetAttributes = {
+					1E545FC31E0AD7E500D19810 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = GJX986XEH7;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = 1E545FBF1E0AD7E500D19810 /* Build configuration list for PBXProject "todo-status-bar" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1E545FBB1E0AD7E500D19810;
+			productRefGroup = 1E545FC51E0AD7E500D19810 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1E545FC31E0AD7E500D19810 /* todo-status-bar */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1E545FC21E0AD7E500D19810 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E545FCA1E0AD7E500D19810 /* Assets.xcassets in Resources */,
+				1E545FCD1E0AD7E500D19810 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1E545FC01E0AD7E500D19810 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1E545FC81E0AD7E500D19810 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1E545FCB1E0AD7E500D19810 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1E545FCC1E0AD7E500D19810 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1E545FCF1E0AD7E500D19810 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		1E545FD01E0AD7E500D19810 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.12;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+			};
+			name = Release;
+		};
+		1E545FD21E0AD7E500D19810 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = GJX986XEH7;
+				INFOPLIST_FILE = "todo-status-bar/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.onix-systems.todo-status-bar";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		1E545FD31E0AD7E500D19810 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = GJX986XEH7;
+				INFOPLIST_FILE = "todo-status-bar/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.onix-systems.todo-status-bar";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1E545FBF1E0AD7E500D19810 /* Build configuration list for PBXProject "todo-status-bar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1E545FCF1E0AD7E500D19810 /* Debug */,
+				1E545FD01E0AD7E500D19810 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1E545FD11E0AD7E500D19810 /* Build configuration list for PBXNativeTarget "todo-status-bar" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1E545FD21E0AD7E500D19810 /* Debug */,
+				1E545FD31E0AD7E500D19810 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1E545FBC1E0AD7E500D19810 /* Project object */;
+}
