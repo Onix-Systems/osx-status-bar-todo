@@ -10,27 +10,37 @@ import Cocoa
 
 final class TodoItemsController {
 
+    private let itemsKey = "TodoItems"
     private(set) var todoItems = [TodoItem]()
 
     init() {
-        let item1 = TodoItem(title: "Add todos to menu")
-        let item2 = TodoItem(title: "Enable checking todos off")
-        let item3 = TodoItem(title: "Show remaining todos count in status bar")
-        let item4 = TodoItem(title: "Edit todos in separate window")
-        todoItems = [item1, item2, item3, item4]
+        guard
+            let data = UserDefaults.standard.object(forKey: itemsKey) as? Data,
+            let items = NSKeyedUnarchiver.unarchiveObject(with: data) as? [TodoItem] else {
+                return
+        }
+        todoItems = items
     }
 
     func mark(todoItem: TodoItem, completed: Bool) {
         todoItem.completed = completed
+        saveTodoItems()
     }
 
     func addTodoItem(title: String) {
         let todoItem = TodoItem(title: title)
         todoItems.append(todoItem)
+        saveTodoItems()
     }
 
     func deleteAll() {
         todoItems = []
+        saveTodoItems()
+    }
+
+    private func saveTodoItems() {
+        let data = NSKeyedArchiver.archivedData(withRootObject: todoItems)
+        UserDefaults.standard.set(data, forKey: itemsKey)
     }
     
 }
