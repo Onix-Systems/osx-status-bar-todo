@@ -12,6 +12,8 @@
 		1E545FCD1E0AD7E500D19810 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E545FCB1E0AD7E500D19810 /* MainMenu.xib */; };
 		1E545FD61E0AE62400D19810 /* EditTodosWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E545FD41E0AE62400D19810 /* EditTodosWindowController.swift */; };
 		1E545FD71E0AE62400D19810 /* EditTodosWindowController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E545FD51E0AE62400D19810 /* EditTodosWindowController.xib */; };
+		1E8FB7541E0BCD5200BF6D20 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB7531E0BCD5200BF6D20 /* TodoItem.swift */; };
+		1E8FB7561E0BCD6400BF6D20 /* TodoItemsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB7551E0BCD6400BF6D20 /* TodoItemsController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,8 @@
 		1E545FCE1E0AD7E500D19810 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		1E545FD41E0AE62400D19810 /* EditTodosWindowController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditTodosWindowController.swift; sourceTree = "<group>"; };
 		1E545FD51E0AE62400D19810 /* EditTodosWindowController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EditTodosWindowController.xib; sourceTree = "<group>"; };
+		1E8FB7531E0BCD5200BF6D20 /* TodoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
+		1E8FB7551E0BCD6400BF6D20 /* TodoItemsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoItemsController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +59,8 @@
 			isa = PBXGroup;
 			children = (
 				1E545FC71E0AD7E500D19810 /* AppDelegate.swift */,
+				1E8FB7531E0BCD5200BF6D20 /* TodoItem.swift */,
+				1E8FB7551E0BCD6400BF6D20 /* TodoItemsController.swift */,
 				1E545FD41E0AE62400D19810 /* EditTodosWindowController.swift */,
 				1E545FD51E0AE62400D19810 /* EditTodosWindowController.xib */,
 				1E545FC91E0AD7E500D19810 /* Assets.xcassets */,
@@ -137,7 +143,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1E8FB7561E0BCD6400BF6D20 /* TodoItemsController.swift in Sources */,
 				1E545FC81E0AD7E500D19810 /* AppDelegate.swift in Sources */,
+				1E8FB7541E0BCD5200BF6D20 /* TodoItem.swift in Sources */,
 				1E545FD61E0AE62400D19810 /* EditTodosWindowController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -293,6 +301,7 @@
 				1E545FD31E0AD7E500D19810 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

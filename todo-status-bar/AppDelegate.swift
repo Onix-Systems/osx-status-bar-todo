@@ -8,72 +8,24 @@
 
 import Cocoa
 
-final class TodoItem {
-    let title: String
-    var completed = false
-
-    init(title: String) {
-        self.title = title
-    }
-}
-
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
     @IBOutlet weak var window: NSWindow!
 
     let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
-    lazy var todoItems: [TodoItem] = AppDelegate.generateTodosList()
+    lazy var todoItemsController: TodoItemsController = TodoItemsController()
+    lazy var editTodosWindowController: EditTodosWindowController = EditTodosWindowController(windowNibName: "EditTodosWindowController")
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        guard let button = statusItem.button else { return }
-        button.title = "TODOs"
-
-        let menu = NSMenu()
-        todoItems.forEach { todoItem in
-            let todo = NSMenuItem(title: todoItem.title, action: #selector(AppDelegate.menuTodoItemPressed(_:)), keyEquivalent: "")
-            todo.representedObject = todoItem
-            menu.addItem(todo)
-        }
-        menu.addItem(NSMenuItem.separator())
-        let edit = NSMenuItem(title: "Edit TODOs...", action: #selector(AppDelegate.menuEditItemPressed(_:)), keyEquivalent: "")
-        menu.addItem(edit)
-
-        menu.addItem(NSMenuItem.separator())
-
-        let quit = NSMenuItem(title: "Quit", action: #selector(NSApp.terminate(_:)), keyEquivalent: "")
-        menu.addItem(quit)
-
-        statusItem.menu = menu
+        setupStatusItem()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
         // Insert code here to tear down your application
     }
 
-    private static func generateTodosList() -> [TodoItem] {
-        let item1 = TodoItem(title: "Add todos to menu")
-        let item2 = TodoItem(title: "Enable checking todos off")
-        let item3 = TodoItem(title: "Show remaining todos count in status bar")
-        let item4 = TodoItem(title: "Edit todos in separate window")
-        return [item1, item2, item3, item4]
-    }
-
-    @objc private func menuTodoItemPressed(_ sender: NSMenuItem) {
-        guard let todoItem = sender.representedObject as? TodoItem else { return }
-        todoItem.completed = !todoItem.completed
-    }
-
-    lazy var editTodosWindowController: EditTodosWindowController = EditTodosWindowController(windowNibName: "EditTodosWindowController")
-
-    @objc private func menuEditItemPressed(_ sender: NSMenuItem) {
-        NSApp.activate(ignoringOtherApps: true)
-        editTodosWindowController.todoItems = todoItems
-        editTodosWindowController.window?.center()
-        editTodosWindowController.window?.makeFirstResponder(nil)
-        editTodosWindowController.window?.makeKeyAndOrderFront(editTodosWindowController)
-        editTodosWindowController.tableView.reloadData()
-    }
+    // MARK: - Validate Menu Item
 
     override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
         if let todoItem = menuItem.representedObject as? TodoItem {
@@ -84,5 +36,60 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return true
     }
 
-}
+    // MARK: - Setup Status Item
 
+    private func setupStatusItem() {
+        setupStatusItemButton()
+        setupStatsItemMenu()
+    }
+
+    private func setupStatusItemButton() {
+        guard let button = statusItem.button else { return }
+        button.title = "TODOs"
+    }
+
+    private func setupStatsItemMenu() {
+        let menu = NSMenu()
+        menuItems(todoItems: todoItemsController.todoItems).forEach(menu.addItem)
+        menu.addItem(NSMenuItem.separator())
+        menu.addItem(editMenuItem)
+        menu.addItem(NSMenuItem.separator())
+        menu.addItem(quitMenuItem)
+        statusItem.menu = menu
+    }
+
+    private func menuItems(todoItems: [TodoItem]) -> [NSMenuItem] {
+        var items = [NSMenuItem]()
+        todoItems.forEach { todoItem in
+            let todo = NSMenuItem(title: todoItem.title, action: #selector(AppDelegate.menuTodoItemPressed(_:)), keyEquivalent: "")
+            todo.representedObject = todoItem
+            items.append(todo)
+        }
+        return items
+    }
+
+    private var editMenuItem: NSMenuItem {
+        return NSMenuItem(title: "Edit TODOs...", action: #selector(AppDelegate.menuEditItemPressed(_:)), keyEquivalent: "")
+    }
+
+    private var quitMenuItem: NSMenuItem {
+        return NSMenuItem(title: "Quit", action: #selector(NSApp.terminate(_:)), keyEquivalent: "")
+    }
+
+    // MARK: - Menu Actions
+
+    @objc private func menuTodoItemPressed(_ sender: NSMenuItem) {
+        guard let todoItem = sender.representedObject as? TodoItem else { return }
+        todoItem.completed = !todoItem.completed
+    }
+
+    @objc private func menuEditItemPressed(_ sender: NSMenuItem) {
+        NSApp.activate(ignoringOtherApps: true)
+        editTodosWindowController.todoItemsController = todoItemsController
+        editTodosWindowController.window?.center()
+        editTodosWindowController.window?.makeFirstResponder(nil)
+        editTodosWindowController.window?.makeKeyAndOrderFront(editTodosWindowController)
+        editTodosWindowController.tableView.reloadData()
+    }
+
+}

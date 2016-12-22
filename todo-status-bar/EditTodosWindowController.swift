@@ -10,7 +10,7 @@ import Cocoa
 
 class EditTodosWindowController: NSWindowController, NSTableViewDelegate, NSTableViewDataSource {
 
-    var todoItems: [TodoItem]?
+    var todoItemsController: TodoItemsController?
     @IBOutlet var tableView: NSTableView!
 
     override func windowDidLoad() {
@@ -20,12 +20,12 @@ class EditTodosWindowController: NSWindowController, NSTableViewDelegate, NSTabl
     }
 
     func numberOfRows(in tableView: NSTableView) -> Int {
-        return todoItems?.count ?? 0
+        return todoItemsController?.todoItems.count ?? 0
     }
 
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         guard
-            let todoItem = todoItems?[row],
+            let todoItem = todoItemsController?.todoItems[row],
             let identifier = tableColumn?.identifier,
             let cellView = tableView.make(withIdentifier: identifier, owner: self) as? NSTableCellView else {
                 return nil
@@ -44,8 +44,9 @@ class EditTodosWindowController: NSWindowController, NSTableViewDelegate, NSTabl
     }
 
     @objc private func checkboxButtonStateChanged(_ sender: NSButton) {
-        guard let todoItem = todoItems?[sender.tag] else { return }
-        todoItem.completed = sender.state == NSOnState
+        guard let todoItemsController = todoItemsController else { return }
+        let todoItem = todoItemsController.todoItems[sender.tag]
+        todoItemsController.mark(todoItem: todoItem, completed: sender.state == NSOnState)
     }
 
     @IBAction private func addButtonPressed(_ sender: NSButton) {
@@ -60,7 +61,8 @@ class EditTodosWindowController: NSWindowController, NSTableViewDelegate, NSTabl
         alert.addButton(withTitle: "OK")
         let response = alert.runModal()
         if response == NSAlertSecondButtonReturn {
-            // TODO: delete all
+            todoItemsController?.deleteAll()
+            tableView.reloadData()
         }
     }
     
