@@ -8,8 +8,16 @@
 
 import Cocoa
 
-class EditTodosWindowController: NSWindowController, NSTableViewDelegate, NSTableViewDataSource {
+protocol EditTodosWindowControllerDelegate: class {
+    func editTodosWindowControllerDidUpdateTodoItems(_ controller: EditTodosWindowController)
+}
 
+class EditTodosWindowController: NSWindowController, NSTableViewDelegate, NSTableViewDataSource, AddTodoViewControllerDelegate {
+
+    lazy var addTodoViewController: AddTodoViewController = AddTodoViewController()
+    var panel: NSPanel?
+
+    weak var delegate: EditTodosWindowControllerDelegate?
     var todoItemsController: TodoItemsController?
     @IBOutlet var tableView: NSTableView!
 
@@ -51,6 +59,22 @@ class EditTodosWindowController: NSWindowController, NSTableViewDelegate, NSTabl
 
     @IBAction private func addButtonPressed(_ sender: NSButton) {
 
+        addTodoViewController.delegate = self
+        guard let window = window else { return }
+        let panel = NSPanel(contentViewController: addTodoViewController)
+        var styleMask = panel.styleMask
+        styleMask.remove(.resizable)
+        panel.styleMask = styleMask
+        self.panel = panel
+        window.beginSheet(panel)
+    }
+
+    func addTodoViewController(_ controller: AddTodoViewController, didAddTodoWith title: String) {
+        todoItemsController?.addTodoItem(title: title)
+        delegate?.editTodosWindowControllerDidUpdateTodoItems(self)
+        tableView.reloadData()
+        guard let window = window, let panel = panel else { return }
+        window.endSheet(panel)
     }
 
     @IBAction private func clearAllButtonPressed(_ sender: NSButton) {
@@ -63,6 +87,7 @@ class EditTodosWindowController: NSWindowController, NSTableViewDelegate, NSTabl
         if response == NSAlertSecondButtonReturn {
             todoItemsController?.deleteAll()
             tableView.reloadData()
+            delegate?.editTodosWindowControllerDidUpdateTodoItems(self)
         }
     }
     

@@ -9,7 +9,7 @@
 import Cocoa
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, EditTodosWindowControllerDelegate {
 
     @IBOutlet weak var window: NSWindow!
 
@@ -85,11 +85,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     @objc private func menuEditItemPressed(_ sender: NSMenuItem) {
         NSApp.activate(ignoringOtherApps: true)
+        editTodosWindowController.delegate = self
         editTodosWindowController.todoItemsController = todoItemsController
         editTodosWindowController.window?.center()
         editTodosWindowController.window?.makeFirstResponder(nil)
         editTodosWindowController.window?.makeKeyAndOrderFront(editTodosWindowController)
         editTodosWindowController.tableView.reloadData()
+    }
+
+    func editTodosWindowControllerDidUpdateTodoItems(_ controller: EditTodosWindowController) {
+        setupStatsItemMenu()
     }
 
 }
