@@ -38,6 +38,11 @@ final class TodoItemsController {
         saveTodoItems()
     }
 
+    func deleteTodoItem(at index: Int) {
+        todoItems.remove(at: index)
+        saveTodoItems()
+    }
+
     func update(title: String, forTodoItem todoItem: TodoItem) {
         todoItem.title = title
         saveTodoItems()

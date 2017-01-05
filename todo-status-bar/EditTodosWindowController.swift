@@ -53,6 +53,9 @@ class EditTodosWindowController: NSWindowController, NSTableViewDelegate, NSTabl
         }
         if identifier == "TextCell" {
             cellView.textField?.stringValue = todoItem.title
+            if let cellView = cellView as? TodoItemTableCellView {
+                cellView.todoItem = todoItem
+            }
         } else if identifier == "CheckboxCell" {
             if let cellView = cellView as? CheckboxTableCellView {
                 cellView.checkboxButton.state = todoItem.completed ? NSOnState : NSOffState
@@ -134,9 +137,22 @@ class EditTodosWindowController: NSWindowController, NSTableViewDelegate, NSTabl
         todoItemsController.update(title: sender.stringValue, forTodoItem: todoItem)
         delegate?.editTodosWindowControllerDidUpdateTodoItems(self)
     }
-    
-}
 
-final class CheckboxTableCellView: NSTableCellView {
-    @IBOutlet var checkboxButton: NSButton!
+    func deleteMenuItemPressed(_ sender: NSMenuItem) {
+        guard
+            let todoItemsController = todoItemsController,
+            let todoItem = sender.representedObject as? TodoItem,
+            let index = todoItemsController.todoItems.index(of: todoItem)
+            else {
+                return
+        }
+        todoItemsController.deleteTodoItem(at: index)
+        tableView.reloadData()
+        delegate?.editTodosWindowControllerDidUpdateTodoItems(self)
+    }
+
+    override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+        return true
+    }
+    
 }
