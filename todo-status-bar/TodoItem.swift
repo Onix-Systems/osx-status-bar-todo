@@ -9,7 +9,7 @@
 import Cocoa
 
 final class TodoItem: NSObject, NSCoding {
-    let title: String
+    var title: String
     var completed = false
 
     init(title: String) {

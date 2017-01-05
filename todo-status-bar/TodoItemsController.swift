@@ -38,6 +38,11 @@ final class TodoItemsController {
         saveTodoItems()
     }
 
+    func update(title: String, forTodoItem todoItem: TodoItem) {
+        todoItem.title = title
+        saveTodoItems()
+    }
+
     private func saveTodoItems() {
         let data = NSKeyedArchiver.archivedData(withRootObject: todoItems)
         UserDefaults.standard.set(data, forKey: itemsKey)

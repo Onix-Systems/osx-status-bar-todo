@@ -25,6 +25,7 @@ class EditTodosWindowController: NSWindowController, NSTableViewDelegate, NSTabl
         super.windowDidLoad()
         tableView.delegate = self
         tableView.dataSource = self
+        tableView.doubleAction = #selector(doubleClick(_:))
     }
 
     func numberOfRows(in tableView: NSTableView) -> Int {
@@ -76,6 +77,20 @@ class EditTodosWindowController: NSWindowController, NSTableViewDelegate, NSTabl
         window.endSheet(panel)
     }
 
+    @IBAction private func doubleClick(_ tableView: NSTableView) {
+        let row = tableView.clickedRow
+        guard let view = tableView.view(atColumn: 1, row: row, makeIfNecessary: false) as? NSTableCellView, let textField = view.textField else {
+            return
+        }
+        textField.isEditable = true
+        textField.target = self
+        textField.action = #selector(todoTextFieldDidEndEditing(_:))
+        textField.tag = row
+        if textField.acceptsFirstResponder {
+            window?.makeFirstResponder(textField)
+        }
+    }
+
     @IBAction private func clearAllButtonPressed(_ sender: NSButton) {
         let alert = NSAlert()
         alert.alertStyle = .critical
@@ -88,6 +103,16 @@ class EditTodosWindowController: NSWindowController, NSTableViewDelegate, NSTabl
             tableView.reloadData()
             delegate?.editTodosWindowControllerDidUpdateTodoItems(self)
         }
+    }
+
+    @IBAction private func todoTextFieldDidEndEditing(_ sender: NSTextField) {
+        defer {
+            sender.isEditable = false
+        }
+        guard let todoItemsController = todoItemsController else { return }
+        let todoItem = todoItemsController.todoItems[sender.tag]
+        todoItemsController.update(title: sender.stringValue, forTodoItem: todoItem)
+        delegate?.editTodosWindowControllerDidUpdateTodoItems(self)
     }
     
 }
