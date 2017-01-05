@@ -2,7 +2,7 @@
 //  AddTodoViewController.swift
 //  todo-status-bar
 //
-//  Created by derp on 12/22/16.
+//  Created by Stanislav Derpoliuk on 12/22/16.
 //  Copyright © 2016 Onix-Systems. All rights reserved.
 //
 
@@ -10,6 +10,7 @@ import Cocoa
 
 protocol AddTodoViewControllerDelegate: class {
     func addTodoViewController(_ controller: AddTodoViewController, didAddTodoWith title: String)
+    func addTodoViewControllerDidCancel(_ controller: AddTodoViewController)
 }
 
 class AddTodoViewController: NSViewController, NSControlTextEditingDelegate {
@@ -20,6 +21,10 @@ class AddTodoViewController: NSViewController, NSControlTextEditingDelegate {
         guard let string = fieldEditor.string else { return true }
         delegate?.addTodoViewController(self, didAddTodoWith: string)
         return true
+    }
+
+    override func cancelOperation(_ sender: Any?) {
+        delegate?.addTodoViewControllerDidCancel(self)
     }
     
 }

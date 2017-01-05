@@ -82,7 +82,7 @@
                                             </textFieldCell>
                                             <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
                                             <prototypeCellViews>
-                                                <tableCellView id="CYZ-gi-jVk">
+                                                <tableCellView id="CYZ-gi-jVk" customClass="TodoItemTableCellView" customModule="todo_status_bar" customModuleProvider="target">
                                                     <rect key="frame" x="44" y="1" width="202" height="17"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                     <subviews>

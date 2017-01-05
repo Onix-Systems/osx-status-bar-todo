@@ -2,7 +2,7 @@
 //  AppDelegate.swift
 //  todo-status-bar
 //
-//  Created by derp on 12/21/16.
+//  Created by Stanislav Derpoliuk on 12/21/16.
 //  Copyright © 2016 Onix-Systems. All rights reserved.
 //
 
@@ -19,10 +19,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, EditTodosWindowControllerDel
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         updateStatusItem()
-    }
-
-    func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
     }
 
     // MARK: - Validate Menu Item
@@ -65,6 +61,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, EditTodosWindowControllerDel
         todoItems.forEach { todoItem in
             let todo = NSMenuItem(title: todoItem.title, action: #selector(menuTodoItemPressed(_:)), keyEquivalent: "")
             todo.representedObject = todoItem
+            if todoItem.completed {
+                let attributes = [
+                    NSStrikethroughStyleAttributeName: NSNumber(value: NSUnderlineStyle.styleSingle.rawValue),
+                    NSFontAttributeName: NSFont.menuBarFont(ofSize: 0)
+                ]
+                let attributedString = NSAttributedString(string: todoItem.title, attributes: attributes)
+                todo.attributedTitle = attributedString
+            }
             items.append(todo)
         }
         return items
@@ -83,6 +87,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, EditTodosWindowControllerDel
     @objc private func menuTodoItemPressed(_ sender: NSMenuItem) {
         guard let todoItem = sender.representedObject as? TodoItem else { return }
         todoItem.completed = !todoItem.completed
+        updateStatusItem()
     }
 
     @objc private func menuEditItemPressed(_ sender: NSMenuItem) {

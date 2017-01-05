@@ -2,7 +2,7 @@
 //  EditTodosWindowController.swift
 //  todo-status-bar
 //
-//  Created by derp on 12/21/16.
+//  Created by Stanislav Derpoliuk on 12/21/16.
 //  Copyright © 2016 Onix-Systems. All rights reserved.
 //
 
@@ -14,23 +14,35 @@ protocol EditTodosWindowControllerDelegate: class {
 
 class EditTodosWindowController: NSWindowController, NSTableViewDelegate, NSTableViewDataSource, AddTodoViewControllerDelegate {
 
-    lazy var addTodoViewController: AddTodoViewController = AddTodoViewController()
-    var panel: NSPanel?
-
     weak var delegate: EditTodosWindowControllerDelegate?
     var todoItemsController: TodoItemsController?
     @IBOutlet var tableView: NSTableView!
 
+    private var addTodoPanel: NSPanel?
+
     override func windowDidLoad() {
         super.windowDidLoad()
+        setupTableView()
+    }
+
+    private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.doubleAction = #selector(doubleClick(_:))
     }
 
+    private func hideAddTodoPanel() {
+        guard let window = window, let panel = addTodoPanel else { return }
+        window.endSheet(panel)
+    }
+
+    // MAKR: - NSTableViewDataSource
+
     func numberOfRows(in tableView: NSTableView) -> Int {
         return todoItemsController?.todoItems.count ?? 0
     }
+
+    // MARK: - NSTableViewDelegate
 
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         guard
@@ -41,6 +53,9 @@ class EditTodosWindowController: NSWindowController, NSTableViewDelegate, NSTabl
         }
         if identifier == "TextCell" {
             cellView.textField?.stringValue = todoItem.title
+            if let cellView = cellView as? TodoItemTableCellView {
+                cellView.todoItem = todoItem
+            }
         } else if identifier == "CheckboxCell" {
             if let cellView = cellView as? CheckboxTableCellView {
                 cellView.checkboxButton.state = todoItem.completed ? NSOnState : NSOffState
@@ -52,29 +67,38 @@ class EditTodosWindowController: NSWindowController, NSTableViewDelegate, NSTabl
         return cellView
     }
 
+    // MARK: - AddTodoViewControllerDelegate
+
+    func addTodoViewController(_ controller: AddTodoViewController, didAddTodoWith title: String) {
+        todoItemsController?.addTodoItem(title: title)
+        delegate?.editTodosWindowControllerDidUpdateTodoItems(self)
+        tableView.reloadData()
+        hideAddTodoPanel()
+    }
+
+    func addTodoViewControllerDidCancel(_ controller: AddTodoViewController) {
+        hideAddTodoPanel()
+    }
+
+    // MARK: - Actions
+
     @objc private func checkboxButtonStateChanged(_ sender: NSButton) {
         guard let todoItemsController = todoItemsController else { return }
         let todoItem = todoItemsController.todoItems[sender.tag]
         todoItemsController.mark(todoItem: todoItem, completed: sender.state == NSOnState)
+        delegate?.editTodosWindowControllerDidUpdateTodoItems(self)
     }
 
     @IBAction private func addButtonPressed(_ sender: NSButton) {
+        let addTodoViewController = AddTodoViewController()
         addTodoViewController.delegate = self
         guard let window = window else { return }
         let panel = NSPanel(contentViewController: addTodoViewController)
         var styleMask = panel.styleMask
         styleMask.remove(.resizable)
         panel.styleMask = styleMask
-        self.panel = panel
+        self.addTodoPanel = panel
         window.beginSheet(panel)
-    }
-
-    func addTodoViewController(_ controller: AddTodoViewController, didAddTodoWith title: String) {
-        todoItemsController?.addTodoItem(title: title)
-        delegate?.editTodosWindowControllerDidUpdateTodoItems(self)
-        tableView.reloadData()
-        guard let window = window, let panel = panel else { return }
-        window.endSheet(panel)
     }
 
     @IBAction private func doubleClick(_ tableView: NSTableView) {
@@ -114,9 +138,22 @@ class EditTodosWindowController: NSWindowController, NSTableViewDelegate, NSTabl
         todoItemsController.update(title: sender.stringValue, forTodoItem: todoItem)
         delegate?.editTodosWindowControllerDidUpdateTodoItems(self)
     }
-    
-}
 
-final class CheckboxTableCellView: NSTableCellView {
-    @IBOutlet var checkboxButton: NSButton!
+    func deleteMenuItemPressed(_ sender: NSMenuItem) {
+        guard
+            let todoItemsController = todoItemsController,
+            let todoItem = sender.representedObject as? TodoItem,
+            let index = todoItemsController.todoItems.index(of: todoItem)
+            else {
+                return
+        }
+        todoItemsController.deleteTodoItem(at: index)
+        tableView.reloadData()
+        delegate?.editTodosWindowControllerDidUpdateTodoItems(self)
+    }
+
+    override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+        return true
+    }
+    
 }

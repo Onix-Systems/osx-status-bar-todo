@@ -2,7 +2,7 @@
 //  TodoItemsController.swift
 //  todo-status-bar
 //
-//  Created by derp on 12/22/16.
+//  Created by Stanislav Derpoliuk on 12/22/16.
 //  Copyright © 2016 Onix-Systems. All rights reserved.
 //
 
@@ -35,6 +35,11 @@ final class TodoItemsController {
 
     func deleteAll() {
         todoItems = []
+        saveTodoItems()
+    }
+
+    func deleteTodoItem(at index: Int) {
+        todoItems.remove(at: index)
         saveTodoItems()
     }
 

@@ -16,10 +16,12 @@
 		1E8FB7561E0BCD6400BF6D20 /* TodoItemsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB7551E0BCD6400BF6D20 /* TodoItemsController.swift */; };
 		1E8FB75D1E0BF88300BF6D20 /* AddTodoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E8FB75B1E0BF88300BF6D20 /* AddTodoViewController.swift */; };
 		1E8FB75E1E0BF88300BF6D20 /* AddTodoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1E8FB75C1E0BF88300BF6D20 /* AddTodoViewController.xib */; };
+		1EC8A5F21E1EAD5E003E401F /* CheckboxTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC8A5F11E1EAD5D003E401F /* CheckboxTableCellView.swift */; };
+		1EC8A5F41E1EAD75003E401F /* TodoItemTableCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1EC8A5F31E1EAD75003E401F /* TodoItemTableCellView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1E545FC41E0AD7E500D19810 /* todo-status-bar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "todo-status-bar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E545FC41E0AD7E500D19810 /* status-bar-todo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "status-bar-todo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E545FC71E0AD7E500D19810 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E545FC91E0AD7E500D19810 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1E545FCC1E0AD7E500D19810 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -30,6 +32,8 @@
 		1E8FB7551E0BCD6400BF6D20 /* TodoItemsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoItemsController.swift; sourceTree = "<group>"; };
 		1E8FB75B1E0BF88300BF6D20 /* AddTodoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddTodoViewController.swift; sourceTree = "<group>"; };
 		1E8FB75C1E0BF88300BF6D20 /* AddTodoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddTodoViewController.xib; sourceTree = "<group>"; };
+		1EC8A5F11E1EAD5D003E401F /* CheckboxTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CheckboxTableCellView.swift; sourceTree = "<group>"; };
+		1EC8A5F31E1EAD75003E401F /* TodoItemTableCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoItemTableCellView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,7 +58,7 @@
 		1E545FC51E0AD7E500D19810 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1E545FC41E0AD7E500D19810 /* todo-status-bar.app */,
+				1E545FC41E0AD7E500D19810 /* status-bar-todo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -67,21 +71,24 @@
 				1E8FB7551E0BCD6400BF6D20 /* TodoItemsController.swift */,
 				1E8FB75B1E0BF88300BF6D20 /* AddTodoViewController.swift */,
 				1E8FB75C1E0BF88300BF6D20 /* AddTodoViewController.xib */,
-				1E545FD41E0AE62400D19810 /* EditTodosWindowController.swift */,
 				1E545FD51E0AE62400D19810 /* EditTodosWindowController.xib */,
+				1E545FD41E0AE62400D19810 /* EditTodosWindowController.swift */,
+				1EC8A5F11E1EAD5D003E401F /* CheckboxTableCellView.swift */,
+				1EC8A5F31E1EAD75003E401F /* TodoItemTableCellView.swift */,
 				1E545FC91E0AD7E500D19810 /* Assets.xcassets */,
 				1E545FCB1E0AD7E500D19810 /* MainMenu.xib */,
 				1E545FCE1E0AD7E500D19810 /* Info.plist */,
 			);
-			path = "todo-status-bar";
+			name = "todo-status-bar";
+			path = "status-bar-todo";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1E545FC31E0AD7E500D19810 /* todo-status-bar */ = {
+		1E545FC31E0AD7E500D19810 /* status-bar-todo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1E545FD11E0AD7E500D19810 /* Build configuration list for PBXNativeTarget "todo-status-bar" */;
+			buildConfigurationList = 1E545FD11E0AD7E500D19810 /* Build configuration list for PBXNativeTarget "status-bar-todo" */;
 			buildPhases = (
 				1E545FC01E0AD7E500D19810 /* Sources */,
 				1E545FC11E0AD7E500D19810 /* Frameworks */,
@@ -91,9 +98,9 @@
 			);
 			dependencies = (
 			);
-			name = "todo-status-bar";
+			name = "status-bar-todo";
 			productName = "todo-status-bar";
-			productReference = 1E545FC41E0AD7E500D19810 /* todo-status-bar.app */;
+			productReference = 1E545FC41E0AD7E500D19810 /* status-bar-todo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -113,7 +120,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 1E545FBF1E0AD7E500D19810 /* Build configuration list for PBXProject "todo-status-bar" */;
+			buildConfigurationList = 1E545FBF1E0AD7E500D19810 /* Build configuration list for PBXProject "status-bar-todo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -126,7 +133,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1E545FC31E0AD7E500D19810 /* todo-status-bar */,
+				1E545FC31E0AD7E500D19810 /* status-bar-todo */,
 			);
 		};
 /* End PBXProject section */
@@ -152,6 +159,8 @@
 			files = (
 				1E8FB7561E0BCD6400BF6D20 /* TodoItemsController.swift in Sources */,
 				1E545FC81E0AD7E500D19810 /* AppDelegate.swift in Sources */,
+				1EC8A5F21E1EAD5E003E401F /* CheckboxTableCellView.swift in Sources */,
+				1EC8A5F41E1EAD75003E401F /* TodoItemTableCellView.swift in Sources */,
 				1E8FB7541E0BCD5200BF6D20 /* TodoItem.swift in Sources */,
 				1E8FB75D1E0BF88300BF6D20 /* AddTodoViewController.swift in Sources */,
 				1E545FD61E0AE62400D19810 /* EditTodosWindowController.swift in Sources */,
@@ -268,9 +277,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = GJX986XEH7;
-				INFOPLIST_FILE = "todo-status-bar/Info.plist";
+				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.onix-systems.todo-status-bar";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.onix-systems.status-bar-todo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -282,9 +291,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = GJX986XEH7;
-				INFOPLIST_FILE = "todo-status-bar/Info.plist";
+				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.onix-systems.todo-status-bar";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.onix-systems.status-bar-todo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -293,7 +302,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1E545FBF1E0AD7E500D19810 /* Build configuration list for PBXProject "todo-status-bar" */ = {
+		1E545FBF1E0AD7E500D19810 /* Build configuration list for PBXProject "status-bar-todo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1E545FCF1E0AD7E500D19810 /* Debug */,
@@ -302,7 +311,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1E545FD11E0AD7E500D19810 /* Build configuration list for PBXNativeTarget "todo-status-bar" */ = {
+		1E545FD11E0AD7E500D19810 /* Build configuration list for PBXNativeTarget "status-bar-todo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1E545FD21E0AD7E500D19810 /* Debug */,
