@@ -2,7 +2,7 @@
 //  TodoItemTableCellView.swift
 //  todo-status-bar
 //
-//  Created by derp on 1/5/17.
+//  Created by Stanislav Derpoliuk on 1/5/17.
 //  Copyright © 2017 Onix-Systems. All rights reserved.
 //
 

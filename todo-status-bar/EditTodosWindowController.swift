@@ -2,7 +2,7 @@
 //  EditTodosWindowController.swift
 //  todo-status-bar
 //
-//  Created by derp on 12/21/16.
+//  Created by Stanislav Derpoliuk on 12/21/16.
 //  Copyright © 2016 Onix-Systems. All rights reserved.
 //
 
