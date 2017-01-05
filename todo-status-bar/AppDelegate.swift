@@ -21,10 +21,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, EditTodosWindowControllerDel
         updateStatusItem()
     }
 
-    func applicationWillTerminate(_ aNotification: Notification) {
-        // Insert code here to tear down your application
-    }
-
     // MARK: - Validate Menu Item
 
     override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
