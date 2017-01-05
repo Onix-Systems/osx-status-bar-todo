@@ -14,23 +14,36 @@ protocol EditTodosWindowControllerDelegate: class {
 
 class EditTodosWindowController: NSWindowController, NSTableViewDelegate, NSTableViewDataSource, AddTodoViewControllerDelegate {
 
-    lazy var addTodoViewController: AddTodoViewController = AddTodoViewController()
-    var panel: NSPanel?
-
     weak var delegate: EditTodosWindowControllerDelegate?
     var todoItemsController: TodoItemsController?
     @IBOutlet var tableView: NSTableView!
 
+    private var addTodoPanel: NSPanel?
+    private lazy var addTodoViewController: AddTodoViewController = AddTodoViewController()
+
     override func windowDidLoad() {
         super.windowDidLoad()
+        setupTableView()
+    }
+
+    private func setupTableView() {
         tableView.delegate = self
         tableView.dataSource = self
         tableView.doubleAction = #selector(doubleClick(_:))
     }
 
+    private func hideAddTodoPanel() {
+        guard let window = window, let panel = addTodoPanel else { return }
+        window.endSheet(panel)
+    }
+
+    // MAKR: - NSTableViewDataSource
+
     func numberOfRows(in tableView: NSTableView) -> Int {
         return todoItemsController?.todoItems.count ?? 0
     }
+
+    // MARK: - NSTableViewDelegate
 
     func tableView(_ tableView: NSTableView, viewFor tableColumn: NSTableColumn?, row: Int) -> NSView? {
         guard
@@ -52,6 +65,17 @@ class EditTodosWindowController: NSWindowController, NSTableViewDelegate, NSTabl
         return cellView
     }
 
+    // MARK: - AddTodoViewControllerDelegate
+
+    func addTodoViewController(_ controller: AddTodoViewController, didAddTodoWith title: String) {
+        todoItemsController?.addTodoItem(title: title)
+        delegate?.editTodosWindowControllerDidUpdateTodoItems(self)
+        tableView.reloadData()
+        hideAddTodoPanel()
+    }
+
+    // MARK: - Actions
+
     @objc private func checkboxButtonStateChanged(_ sender: NSButton) {
         guard let todoItemsController = todoItemsController else { return }
         let todoItem = todoItemsController.todoItems[sender.tag]
@@ -65,16 +89,8 @@ class EditTodosWindowController: NSWindowController, NSTableViewDelegate, NSTabl
         var styleMask = panel.styleMask
         styleMask.remove(.resizable)
         panel.styleMask = styleMask
-        self.panel = panel
+        self.addTodoPanel = panel
         window.beginSheet(panel)
-    }
-
-    func addTodoViewController(_ controller: AddTodoViewController, didAddTodoWith title: String) {
-        todoItemsController?.addTodoItem(title: title)
-        delegate?.editTodosWindowControllerDidUpdateTodoItems(self)
-        tableView.reloadData()
-        guard let window = window, let panel = panel else { return }
-        window.endSheet(panel)
     }
 
     @IBAction private func doubleClick(_ tableView: NSTableView) {
