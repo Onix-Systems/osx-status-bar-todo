@@ -86,6 +86,7 @@ class EditTodosWindowController: NSWindowController, NSTableViewDelegate, NSTabl
         guard let todoItemsController = todoItemsController else { return }
         let todoItem = todoItemsController.todoItems[sender.tag]
         todoItemsController.mark(todoItem: todoItem, completed: sender.state == NSOnState)
+        delegate?.editTodosWindowControllerDidUpdateTodoItems(self)
     }
 
     @IBAction private func addButtonPressed(_ sender: NSButton) {
