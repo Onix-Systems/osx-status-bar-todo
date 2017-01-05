@@ -45,7 +45,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, EditTodosWindowControllerDel
 
     private func updateStatusItemButton() {
         guard let button = statusItem.button else { return }
-        button.title = "TODOs"
+        let totalCount = todoItemsController.todoItems.count
+        let completedCount = todoItemsController.todoItems.filter { $0.completed }.count
+        button.title = "☑️\(completedCount)/\(totalCount)"
     }
 
     private func updateStatsItemMenu() {
