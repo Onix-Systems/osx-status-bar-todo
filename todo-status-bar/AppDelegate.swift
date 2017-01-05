@@ -65,6 +65,14 @@ class AppDelegate: NSObject, NSApplicationDelegate, EditTodosWindowControllerDel
         todoItems.forEach { todoItem in
             let todo = NSMenuItem(title: todoItem.title, action: #selector(menuTodoItemPressed(_:)), keyEquivalent: "")
             todo.representedObject = todoItem
+            if todoItem.completed {
+                let attributes = [
+                    NSStrikethroughStyleAttributeName: NSNumber(value: NSUnderlineStyle.styleSingle.rawValue),
+                    NSFontAttributeName: NSFont.menuBarFont(ofSize: 0)
+                ]
+                let attributedString = NSAttributedString(string: todoItem.title, attributes: attributes)
+                todo.attributedTitle = attributedString
+            }
             items.append(todo)
         }
         return items
@@ -83,6 +91,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, EditTodosWindowControllerDel
     @objc private func menuTodoItemPressed(_ sender: NSMenuItem) {
         guard let todoItem = sender.representedObject as? TodoItem else { return }
         todoItem.completed = !todoItem.completed
+        updateStatusItem()
     }
 
     @objc private func menuEditItemPressed(_ sender: NSMenuItem) {
