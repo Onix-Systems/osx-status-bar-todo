@@ -10,6 +10,7 @@ import Cocoa
 
 protocol AddTodoViewControllerDelegate: class {
     func addTodoViewController(_ controller: AddTodoViewController, didAddTodoWith title: String)
+    func addTodoViewControllerDidCancel(_ controller: AddTodoViewController)
 }
 
 class AddTodoViewController: NSViewController, NSControlTextEditingDelegate {
@@ -20,6 +21,10 @@ class AddTodoViewController: NSViewController, NSControlTextEditingDelegate {
         guard let string = fieldEditor.string else { return true }
         delegate?.addTodoViewController(self, didAddTodoWith: string)
         return true
+    }
+
+    override func cancelOperation(_ sender: Any?) {
+        delegate?.addTodoViewControllerDidCancel(self)
     }
     
 }

@@ -73,6 +73,10 @@ class EditTodosWindowController: NSWindowController, NSTableViewDelegate, NSTabl
         hideAddTodoPanel()
     }
 
+    func addTodoViewControllerDidCancel(_ controller: AddTodoViewController) {
+        hideAddTodoPanel()
+    }
+
     // MARK: - Actions
 
     @objc private func checkboxButtonStateChanged(_ sender: NSButton) {
