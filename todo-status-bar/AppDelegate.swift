@@ -18,7 +18,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, EditTodosWindowControllerDel
     lazy var editTodosWindowController: EditTodosWindowController = EditTodosWindowController(windowNibName: "EditTodosWindowController")
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        setupStatusItem()
+        updateStatusItem()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -38,17 +38,17 @@ class AppDelegate: NSObject, NSApplicationDelegate, EditTodosWindowControllerDel
 
     // MARK: - Setup Status Item
 
-    private func setupStatusItem() {
-        setupStatusItemButton()
-        setupStatsItemMenu()
+    private func updateStatusItem() {
+        updateStatusItemButton()
+        updateStatsItemMenu()
     }
 
-    private func setupStatusItemButton() {
+    private func updateStatusItemButton() {
         guard let button = statusItem.button else { return }
         button.title = "TODOs"
     }
 
-    private func setupStatsItemMenu() {
+    private func updateStatsItemMenu() {
         let menu = NSMenu()
         menuItems(todoItems: todoItemsController.todoItems).forEach(menu.addItem)
         menu.addItem(NSMenuItem.separator())
@@ -61,7 +61,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, EditTodosWindowControllerDel
     private func menuItems(todoItems: [TodoItem]) -> [NSMenuItem] {
         var items = [NSMenuItem]()
         todoItems.forEach { todoItem in
-            let todo = NSMenuItem(title: todoItem.title, action: #selector(AppDelegate.menuTodoItemPressed(_:)), keyEquivalent: "")
+            let todo = NSMenuItem(title: todoItem.title, action: #selector(menuTodoItemPressed(_:)), keyEquivalent: "")
             todo.representedObject = todoItem
             items.append(todo)
         }
@@ -69,7 +69,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, EditTodosWindowControllerDel
     }
 
     private var editMenuItem: NSMenuItem {
-        return NSMenuItem(title: "Edit TODOs...", action: #selector(AppDelegate.menuEditItemPressed(_:)), keyEquivalent: "")
+        return NSMenuItem(title: "Edit TODOs...", action: #selector(menuEditItemPressed(_:)), keyEquivalent: "")
     }
 
     private var quitMenuItem: NSMenuItem {
@@ -94,7 +94,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, EditTodosWindowControllerDel
     }
 
     func editTodosWindowControllerDidUpdateTodoItems(_ controller: EditTodosWindowController) {
-        setupStatsItemMenu()
+        updateStatusItem()
     }
 
 }
