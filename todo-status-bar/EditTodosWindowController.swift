@@ -19,7 +19,6 @@ class EditTodosWindowController: NSWindowController, NSTableViewDelegate, NSTabl
     @IBOutlet var tableView: NSTableView!
 
     private var addTodoPanel: NSPanel?
-    private lazy var addTodoViewController: AddTodoViewController = AddTodoViewController()
 
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -83,6 +82,7 @@ class EditTodosWindowController: NSWindowController, NSTableViewDelegate, NSTabl
     }
 
     @IBAction private func addButtonPressed(_ sender: NSButton) {
+        let addTodoViewController = AddTodoViewController()
         addTodoViewController.delegate = self
         guard let window = window else { return }
         let panel = NSPanel(contentViewController: addTodoViewController)
