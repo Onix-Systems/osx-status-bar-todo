@@ -21,7 +21,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1E545FC41E0AD7E500D19810 /* todo-status-bar.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "todo-status-bar.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		1E545FC41E0AD7E500D19810 /* status-bar-todo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "status-bar-todo.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		1E545FC71E0AD7E500D19810 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1E545FC91E0AD7E500D19810 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1E545FCC1E0AD7E500D19810 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
@@ -58,7 +58,7 @@
 		1E545FC51E0AD7E500D19810 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				1E545FC41E0AD7E500D19810 /* todo-status-bar.app */,
+				1E545FC41E0AD7E500D19810 /* status-bar-todo.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -79,15 +79,16 @@
 				1E545FCB1E0AD7E500D19810 /* MainMenu.xib */,
 				1E545FCE1E0AD7E500D19810 /* Info.plist */,
 			);
-			path = "todo-status-bar";
+			name = "todo-status-bar";
+			path = "status-bar-todo";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		1E545FC31E0AD7E500D19810 /* todo-status-bar */ = {
+		1E545FC31E0AD7E500D19810 /* status-bar-todo */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 1E545FD11E0AD7E500D19810 /* Build configuration list for PBXNativeTarget "todo-status-bar" */;
+			buildConfigurationList = 1E545FD11E0AD7E500D19810 /* Build configuration list for PBXNativeTarget "status-bar-todo" */;
 			buildPhases = (
 				1E545FC01E0AD7E500D19810 /* Sources */,
 				1E545FC11E0AD7E500D19810 /* Frameworks */,
@@ -97,9 +98,9 @@
 			);
 			dependencies = (
 			);
-			name = "todo-status-bar";
+			name = "status-bar-todo";
 			productName = "todo-status-bar";
-			productReference = 1E545FC41E0AD7E500D19810 /* todo-status-bar.app */;
+			productReference = 1E545FC41E0AD7E500D19810 /* status-bar-todo.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -119,7 +120,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 1E545FBF1E0AD7E500D19810 /* Build configuration list for PBXProject "todo-status-bar" */;
+			buildConfigurationList = 1E545FBF1E0AD7E500D19810 /* Build configuration list for PBXProject "status-bar-todo" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -132,7 +133,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				1E545FC31E0AD7E500D19810 /* todo-status-bar */,
+				1E545FC31E0AD7E500D19810 /* status-bar-todo */,
 			);
 		};
 /* End PBXProject section */
@@ -276,9 +277,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = GJX986XEH7;
-				INFOPLIST_FILE = "todo-status-bar/Info.plist";
+				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.onix-systems.todo-status-bar";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.onix-systems.status-bar-todo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -290,9 +291,9 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEVELOPMENT_TEAM = GJX986XEH7;
-				INFOPLIST_FILE = "todo-status-bar/Info.plist";
+				INFOPLIST_FILE = "$(TARGET_NAME)/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.onix-systems.todo-status-bar";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.onix-systems.status-bar-todo";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -301,7 +302,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		1E545FBF1E0AD7E500D19810 /* Build configuration list for PBXProject "todo-status-bar" */ = {
+		1E545FBF1E0AD7E500D19810 /* Build configuration list for PBXProject "status-bar-todo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1E545FCF1E0AD7E500D19810 /* Debug */,
@@ -310,7 +311,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		1E545FD11E0AD7E500D19810 /* Build configuration list for PBXNativeTarget "todo-status-bar" */ = {
+		1E545FD11E0AD7E500D19810 /* Build configuration list for PBXNativeTarget "status-bar-todo" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				1E545FD21E0AD7E500D19810 /* Debug */,
