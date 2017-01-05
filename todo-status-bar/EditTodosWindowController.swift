@@ -45,7 +45,7 @@ class EditTodosWindowController: NSWindowController, NSTableViewDelegate, NSTabl
                 cellView.checkboxButton.state = todoItem.completed ? NSOnState : NSOffState
                 cellView.checkboxButton.tag = row
                 cellView.checkboxButton.target = self
-                cellView.checkboxButton.action = #selector(EditTodosWindowController.checkboxButtonStateChanged(_:))
+                cellView.checkboxButton.action = #selector(checkboxButtonStateChanged(_:))
             }
         }
         return cellView
@@ -58,7 +58,6 @@ class EditTodosWindowController: NSWindowController, NSTableViewDelegate, NSTabl
     }
 
     @IBAction private func addButtonPressed(_ sender: NSButton) {
-
         addTodoViewController.delegate = self
         guard let window = window else { return }
         let panel = NSPanel(contentViewController: addTodoViewController)
