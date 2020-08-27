@@ -15,7 +15,7 @@ Here's how it look like:
 
 ## Installation
 
-Clone project and run it.
+Clone project and run it. (And how to do it being non familier of swift?? Can you please write some steps?)
 
 ## LICENSE
 
