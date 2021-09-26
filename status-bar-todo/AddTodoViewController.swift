@@ -18,7 +18,7 @@ class AddTodoViewController: NSViewController, NSControlTextEditingDelegate {
     weak var delegate: AddTodoViewControllerDelegate?
 
     func control(_ control: NSControl, textShouldEndEditing fieldEditor: NSText) -> Bool {
-        guard let string = fieldEditor.string else { return true }
+        let string = fieldEditor.string
         delegate?.addTodoViewController(self, didAddTodoWith: string)
         return true
     }

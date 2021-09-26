@@ -13,9 +13,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, EditTodosWindowControllerDel
 
     @IBOutlet weak var window: NSWindow!
 
-    let statusItem = NSStatusBar.system().statusItem(withLength: NSVariableStatusItemLength)
+    let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
     lazy var todoItemsController: TodoItemsController = TodoItemsController()
-    lazy var editTodosWindowController: EditTodosWindowController = EditTodosWindowController(windowNibName: "EditTodosWindowController")
+    lazy var editTodosWindowController: EditTodosWindowController = EditTodosWindowController(windowNibName: NSNib.Name("EditTodosWindowController") )
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         updateStatusItem()
@@ -23,9 +23,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, EditTodosWindowControllerDel
 
     // MARK: - Validate Menu Item
 
-    override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+    func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
         if let todoItem = menuItem.representedObject as? TodoItem {
-            menuItem.state = todoItem.completed ? NSOnState : NSOffState
+            menuItem.state = todoItem.completed ? NSControl.StateValue.on : NSControl.StateValue.off
             guard let isVisible = editTodosWindowController.window?.isVisible else { return true }
             return !isVisible
         }
@@ -63,8 +63,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, EditTodosWindowControllerDel
             todo.representedObject = todoItem
             if todoItem.completed {
                 let attributes = [
-                    NSStrikethroughStyleAttributeName: NSNumber(value: NSUnderlineStyle.styleSingle.rawValue),
-                    NSFontAttributeName: NSFont.menuBarFont(ofSize: 0)
+                    NSAttributedString.Key.strikethroughStyle: NSNumber(value: NSUnderlineStyle.single.rawValue),
+                    NSAttributedString.Key.font: NSFont.menuBarFont(ofSize: 0)
                 ]
                 let attributedString = NSAttributedString(string: todoItem.title, attributes: attributes)
                 todo.attributedTitle = attributedString

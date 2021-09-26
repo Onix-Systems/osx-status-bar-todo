@@ -48,17 +48,17 @@ class EditTodosWindowController: NSWindowController, NSTableViewDelegate, NSTabl
         guard
             let todoItem = todoItemsController?.todoItems[row],
             let identifier = tableColumn?.identifier,
-            let cellView = tableView.make(withIdentifier: identifier, owner: self) as? NSTableCellView else {
+            let cellView = tableView.makeView(withIdentifier: identifier, owner: self) as? NSTableCellView else {
                 return nil
         }
-        if identifier == "TextCell" {
+        if identifier.rawValue == "TextCell" {
             cellView.textField?.stringValue = todoItem.title
             if let cellView = cellView as? TodoItemTableCellView {
                 cellView.todoItem = todoItem
             }
-        } else if identifier == "CheckboxCell" {
+        } else if identifier.rawValue == "CheckboxCell" {
             if let cellView = cellView as? CheckboxTableCellView {
-                cellView.checkboxButton.state = todoItem.completed ? NSOnState : NSOffState
+                cellView.checkboxButton.state = todoItem.completed ? NSControl.StateValue.on : NSControl.StateValue.off
                 cellView.checkboxButton.tag = row
                 cellView.checkboxButton.target = self
                 cellView.checkboxButton.action = #selector(checkboxButtonStateChanged(_:))
@@ -85,7 +85,7 @@ class EditTodosWindowController: NSWindowController, NSTableViewDelegate, NSTabl
     @objc private func checkboxButtonStateChanged(_ sender: NSButton) {
         guard let todoItemsController = todoItemsController else { return }
         let todoItem = todoItemsController.todoItems[sender.tag]
-        todoItemsController.mark(todoItem: todoItem, completed: sender.state == NSOnState)
+        todoItemsController.mark(todoItem: todoItem, completed: sender.state == NSControl.StateValue.on)
         delegate?.editTodosWindowControllerDidUpdateTodoItems(self)
     }
 
@@ -122,7 +122,7 @@ class EditTodosWindowController: NSWindowController, NSTableViewDelegate, NSTabl
         alert.addButton(withTitle: "Cancel")
         alert.addButton(withTitle: "OK")
         let response = alert.runModal()
-        if response == NSAlertSecondButtonReturn {
+        if response == NSApplication.ModalResponse.alertSecondButtonReturn {
             todoItemsController?.deleteAll()
             tableView.reloadData()
             delegate?.editTodosWindowControllerDidUpdateTodoItems(self)
@@ -139,11 +139,11 @@ class EditTodosWindowController: NSWindowController, NSTableViewDelegate, NSTabl
         delegate?.editTodosWindowControllerDidUpdateTodoItems(self)
     }
 
-    func deleteMenuItemPressed(_ sender: NSMenuItem) {
+    @objc func deleteMenuItemPressed(_ sender: NSMenuItem) {
         guard
             let todoItemsController = todoItemsController,
             let todoItem = sender.representedObject as? TodoItem,
-            let index = todoItemsController.todoItems.index(of: todoItem)
+            let index = todoItemsController.todoItems.firstIndex(of: todoItem)
             else {
                 return
         }
@@ -152,7 +152,7 @@ class EditTodosWindowController: NSWindowController, NSTableViewDelegate, NSTabl
         delegate?.editTodosWindowControllerDidUpdateTodoItems(self)
     }
 
-    override func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
+    func validateMenuItem(_ menuItem: NSMenuItem) -> Bool {
         return true
     }
     
